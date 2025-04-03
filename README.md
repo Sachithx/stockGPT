@@ -2,7 +2,7 @@
 
 A sentiment-based stock market indicator integrated with OpenAI chat models. StockGPT analyzes tweets and social media content to gauge market sentiment and provides trading signals through a conversational interface.
 
-<img src="results.png" width="600" height="800" alt="StockGPT Results">
+<img src="results.png" width="600" height="900" alt="StockGPT Results">
 
 ## Overview
 
