@@ -21,6 +21,7 @@ The system uses optimal trading parameters determined through extensive grid sea
 - **Conversational Interface**: Interact with your trading data using natural language
 - **Visual Dashboards**: See sentiment trends, trading signals, and performance metrics
 - **Automatic Signal Generation**: Get clear BUY/HOLD recommendations based on sentiment data
+- **Context-Aware Chat**: Bot maintains conversation history for more natural follow-up interactions
 
 ## Installation
 
@@ -55,11 +56,11 @@ python backtest.py --sentiment sentiment_results.csv --prices TSLA_prices.csv
 ### 3. Start the Chat Interface
 
 ```python
-# Launch the web interface
-python app.py
+# Launch the Gradio web interface
+python run_bot.py
 ```
 
-Then navigate to `http://localhost:5000` in your browser to access the interface.
+Then navigate to the provided local URL (typically `http://127.0.0.1:7860`) in your browser to access the interface.
 
 ## Chat Interface Examples
 
@@ -70,15 +71,16 @@ Users can ask questions like:
 - "What are the profit targets for Tesla?"
 - "What parameters are you using for trading decisions?"
 
+The chat interface now maintains conversation context, so you can ask follow-up questions without needing to restate your previous queries.
+
 ## Technical Architecture
 
 StockGPT consists of several components:
-
 1. **Data Collection**: Gathers tweets and stock price data
 2. **Sentiment Analysis**: Uses GPT-3.5-turbo to classify tweet sentiment
 3. **Trading Strategy**: Implements a sentiment threshold for buying and profit targets for selling
 4. **Parameter Optimization**: Grid search to find optimal trading parameters
-5. **Chat Interface**: Flask-based web application with OpenAI integration
+5. **Chat Interface**: Gradio-based web application with OpenAI integration
 
 ![chart.png](chart.png)
 
@@ -95,6 +97,14 @@ The best parameters from our grid search were:
 - Profit target: 25%
 - Stop loss: 3%
 
+## Implementation Details
+
+The conversational interface is built using:
+- **Gradio**: For the interactive web interface
+- **OpenAI API**: Powering the chat functionality with gpt-4
+- **ConversationMemory**: Custom implementation to maintain chat context
+- **Sentiment Analysis**: Daily updated metrics from Twitter/social media
+
 ## Future Improvements
 
 - Support for additional stock tickers beyond Tesla
@@ -102,6 +112,7 @@ The best parameters from our grid search were:
 - Mobile application
 - Portfolio management capabilities
 - Notification system for trading signals
+- Enhanced conversation memory with long-term retention
 
 ## License
 
